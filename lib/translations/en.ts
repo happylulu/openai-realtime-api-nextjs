@@ -73,6 +73,10 @@ export const en = {
             scrapeWebsite: {
                 name: "Website Scraper",
                 description: 'Say "Scrape [website URL]" to extract content from a webpage.'
+            },
+            founderMode: {
+                description: 'Say "Activate founder mode" for a startup-themed animation with emojis!',
+                name: "Founder Mode"
             }
         },
         clipboard: {
@@ -90,6 +94,12 @@ export const en = {
             success: "Party mode activated",
             toast: "Party mode!",
             failed: "Failed to activate party mode",
+        },
+        founderMode: {
+            description: "Failed to activate founder mode",
+            success: "Founder mode activated",
+            toast: "Founder mode!",
+            failed: "Failed to activate founder mode",
         },
         switchTheme: "Theme switched to ",
         themeFailed: "Failed to switch theme",

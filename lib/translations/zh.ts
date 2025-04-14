@@ -73,6 +73,10 @@ export const zh = {
             scrapeWebsite: {
                 name: "网页内容提取器",
                 description: '说"提取[网站URL]的内容"来获取网页内容。'
+            },
+            founderMode: {
+                description: '说"启动创始人模式"以体验创业主题动画和表情符号！',
+                name: "创始人模式"
             }
         },
         clipboard: {
@@ -89,6 +93,12 @@ export const zh = {
             description: "无法激活派对模式",
             success: "派对模式已激活",
             toast: "派对模式！"
+        },
+        founderMode: {
+            description: "无法激活创始人模式",
+            success: "创始人模式已激活",
+            toast: "创始人模式！",
+            failed: "无法激活创始人模式"
         },
         switchTheme: "主题已切换至 ",
         themeFailed: "主题切换失败",

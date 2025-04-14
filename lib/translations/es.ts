@@ -73,6 +73,10 @@ export const es = {
       scrapeWebsite: {
         name: "Extractor de Sitios Web",
         description: 'Di "Extraer contenido de [URL del sitio]" para obtener contenido de una página web.'
+      },
+      founderMode: {
+        description: 'Di "Activar modo fundador" para una animación temática de startup con emojis!',
+        name: "Modo Fundador"
       }
     },
     clipboard: {
@@ -89,6 +93,12 @@ export const es = {
       description: "Error al activar el modo fiesta",
       success: "Modo fiesta activado",
       toast: "¡Modo fiesta!"
+    },
+    founderMode: {
+      description: "Error al activar el modo fundador",
+      success: "Modo fundador activado",
+      toast: "¡Modo fundador!",
+      failed: "Error al activar el modo fundador"
     },
     switchTheme: "Tema cambiado a ",
     themeFailed: "Error al cambiar el tema",
@@ -112,4 +122,4 @@ export const es = {
   },
   language: "Spanish",
   languagePrompt: "Habla y responde solo en español. Es crucial que mantengas tus respuestas en español. Si el usuario habla en otros idiomas, deberías responder en español. (Spanish only)"
-} 
+}

@@ -39,42 +39,43 @@ const App: React.FC = () => {
         timeFunction: 'getCurrentTime',
         backgroundFunction: 'changeBackgroundColor',
         partyFunction: 'partyMode',
-        launchWebsite: 'launchWebsite', 
+        founderFunction: 'founderMode',
+        launchWebsite: 'launchWebsite',
         copyToClipboard: 'copyToClipboard',
         scrapeWebsite: 'scrapeWebsite'
       };
-      
+
       registerFunction(functionNames[name], func);
     });
   }, [registerFunction, toolsFunctions])
 
   return (
     <main className="h-full">
-      <motion.div 
+      <motion.div
         className="container flex flex-col items-center justify-center mx-auto max-w-3xl my-20 p-12 border rounded-lg shadow-xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <Welcome />
-        
-        <motion.div 
+
+        <motion.div
           className="w-full max-w-md bg-card text-card-foreground rounded-xl border shadow-sm p-6 space-y-4"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.4 }}
         >
           <VoiceSelector value={voice} onValueChange={setVoice} />
-          
+
           <div className="flex flex-col items-center gap-4">
-            <BroadcastButton 
-              isSessionActive={isSessionActive} 
+            <BroadcastButton
+              isSessionActive={isSessionActive}
               onClick={handleStartStopClick}
             />
           </div>
           {msgs.length > 4 && <TokenUsageDisplay messages={msgs} />}
           {status && (
-            <motion.div 
+            <motion.div
               className="w-full flex flex-col gap-2"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
@@ -82,14 +83,14 @@ const App: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               <MessageControls conversation={conversation} msgs={msgs} />
-              <TextInput 
+              <TextInput
                 onSubmit={sendTextMessage}
                 disabled={!isSessionActive}
               />
             </motion.div>
           )}
         </motion.div>
-        
+
         {status && <StatusDisplay status={status} />}
         <div className="w-full flex flex-col items-center gap-4">
           <ToolsEducation />

@@ -32,15 +32,15 @@ export const useToolsFunctions = () => {
         description: t('tools.switchTheme') + newTheme + ".",
       })
 
-      return { 
-        success: true, 
+      return {
+        success: true,
         theme: newTheme,
         message: t('tools.switchTheme') + newTheme + "."
       };
     } catch (error) {
-      return { 
-        success: false, 
-        message: t('tools.themeFailed') + ": " + error 
+      return {
+        success: false,
+        message: t('tools.themeFailed') + ": " + error
       };
     }
   }
@@ -49,7 +49,7 @@ export const useToolsFunctions = () => {
     try {
       const duration = 5 * 1000
       const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1", "#3b82f6", "#14b8a6", "#f97316", "#10b981", "#facc15"]
-      
+
       const confettiConfig = {
         particleCount: 30,
         spread: 100,
@@ -69,15 +69,15 @@ export const useToolsFunctions = () => {
       const animate = () => {
         const now = Date.now()
         const end = now + duration
-        
+
         const elements = document.querySelectorAll('div, p, button, h1, h2, h3')
         elements.forEach((element) => {
-          framerAnimate(element, 
-            { 
+          framerAnimate(element,
+            {
               scale: [1, 1.1, 1],
               rotate: [0, 5, -5, 0],
-            }, 
-            { 
+            },
+            {
               duration: 0.5,
               repeat: 10,
               ease: "easeInOut"
@@ -96,14 +96,14 @@ export const useToolsFunctions = () => {
         if (mainElement) {
           mainElement.classList.remove('bg-gradient-to-b', 'from-gray-50', 'to-white')
           const originalBg = mainElement.style.backgroundColor
-          
+
           const changeColor = () => {
             const now = Date.now()
             const end = now + duration
-            
+
             const colorCycle = () => {
               if (Date.now() > end) {
-                framerAnimate(mainElement, 
+                framerAnimate(mainElement,
                   { backgroundColor: originalBg },
                   { duration: 0.5 }
                 )
@@ -116,13 +116,13 @@ export const useToolsFunctions = () => {
               )
               setTimeout(colorCycle, 200)
             }
-            
+
             colorCycle()
           }
-          
+
           changeColor()
         }
-        
+
         frame()
       }
 
@@ -176,7 +176,7 @@ export const useToolsFunctions = () => {
       toast.success(t('tools.scrapeWebsite.toast') + " 📋", {
         description: t('tools.scrapeWebsite.success'),
       })
-    
+
       return {
         success: true,
         message: "Here is the scraped website content: " + JSON.stringify(scrapeResult.markdown) + "Summarize and explain it to the user now in a response."
@@ -190,10 +190,152 @@ export const useToolsFunctions = () => {
     }
   }
 
+  const founderFunction = () => {
+    try {
+      const duration = 5 * 1000
+      // Vibrant founder colors: fiery orange/yellow, bold red
+      const colors = ["#FF5733", "#FFC300", "#FF3333", "#FFBD33", "#FF8333", "#FF4D33", "#FFFFFF", "#F9F9F9"]
+
+      // Founder emojis
+      const emojis = ["💡", "🚀", "🔥", "🛠️", "👀", "🙌", "🤝"]
+
+      const confettiConfig = {
+        particleCount: 30,
+        spread: 100,
+        startVelocity: 90,
+        colors,
+        gravity: 0.5
+      }
+
+      const shootConfetti = (angle: number, origin: { x: number, y: number }) => {
+        confetti({
+          ...confettiConfig,
+          angle,
+          origin
+        })
+      }
+
+      // Create floating emojis
+      const createFloatingEmoji = () => {
+        const emoji = document.createElement('div')
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)]
+        emoji.style.position = 'fixed'
+        emoji.style.fontSize = '2rem'
+        emoji.style.left = `${Math.random() * 100}%`
+        emoji.style.top = `${Math.random() * 100}%`
+        emoji.style.opacity = '0'
+        emoji.style.pointerEvents = 'none'
+        emoji.style.zIndex = '9999'
+        document.body.appendChild(emoji)
+
+        framerAnimate(emoji,
+          {
+            opacity: [0, 1, 0],
+            y: [0, -100],
+            scale: [0.5, 1.5, 0.5]
+          },
+          {
+            duration: 2,
+            ease: "easeOut"
+          }
+        )
+
+        setTimeout(() => {
+          document.body.removeChild(emoji)
+        }, 2000)
+      }
+
+      const animate = () => {
+        const now = Date.now()
+        const end = now + duration
+
+        // Animate elements with a startup/founder vibe
+        const elements = document.querySelectorAll('div, p, button, h1, h2, h3')
+        elements.forEach((element) => {
+          framerAnimate(element,
+            {
+              scale: [1, 1.05, 1],
+              y: [0, -5, 0]
+            },
+            {
+              duration: 0.3,
+              repeat: 5,
+              ease: "easeInOut"
+            }
+          )
+        })
+
+        // Create floating emojis at intervals
+        const emojiInterval = setInterval(() => {
+          createFloatingEmoji()
+        }, 300)
+
+        setTimeout(() => {
+          clearInterval(emojiInterval)
+        }, duration)
+
+        const frame = () => {
+          if (Date.now() > end) return
+          shootConfetti(60, { x: 0, y: 0.5 })
+          shootConfetti(120, { x: 1, y: 0.5 })
+          requestAnimationFrame(frame)
+        }
+
+        const mainElement = document.querySelector('main')
+        if (mainElement) {
+          mainElement.classList.remove('bg-gradient-to-b', 'from-gray-50', 'to-white')
+          const originalBg = mainElement.style.backgroundColor
+
+          // Create a neutral background with vibrant accents
+          const changeColor = () => {
+            const now = Date.now()
+            const end = now + duration
+
+            const colorCycle = () => {
+              if (Date.now() > end) {
+                framerAnimate(mainElement,
+                  { backgroundColor: originalBg },
+                  { duration: 0.5 }
+                )
+                return
+              }
+              // Alternate between neutral and vibrant colors
+              const isNeutral = Math.random() > 0.7
+              const newColor = isNeutral ?
+                (Math.random() > 0.5 ? '#FFFFFF' : '#F5F5F5') :
+                colors[Math.floor(Math.random() * (colors.length - 2))]
+
+              framerAnimate(mainElement,
+                { backgroundColor: newColor },
+                { duration: 0.3 }
+              )
+              setTimeout(colorCycle, 300)
+            }
+
+            colorCycle()
+          }
+
+          changeColor()
+        }
+
+        frame()
+      }
+
+      animate()
+      toast.success(t('tools.founderMode.toast') + " 🚀", {
+        description: t('tools.founderMode.description'),
+      })
+      return { success: true, message: t('tools.founderMode.success') + " 🚀" }
+    } catch (error) {
+      return { success: false, message: t('tools.founderMode.failed') + ": " + error }
+    }
+  }
+
   return {
     timeFunction,
     backgroundFunction,
     partyFunction,
+    founderFunction,
     launchWebsite,
     copyToClipboard,
     scrapeWebsite

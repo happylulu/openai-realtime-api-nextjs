@@ -18,9 +18,9 @@ const toolDefinitions = {
         parameters: {}
     },
     changeBackgroundColor: {
-        description: 'Changes the background color of the page', 
+        description: 'Changes the background color of the page',
         parameters: {
-        color: { 
+        color: {
             type: 'string',
             description: 'Color value (hex, rgb, or color name)'
         }
@@ -60,6 +60,10 @@ const toolDefinitions = {
                 description: 'The URL to scrape'
             }
         }
+    },
+    founderMode: {
+        description: 'Triggers a founder-themed animation with startup emojis and vibrant colors',
+        parameters: {}
     }
 } as const;
 

@@ -73,6 +73,10 @@ export const fr = {
             scrapeWebsite: {
                 name: "Extracteur de Site Web",
                 description: 'Dites "Extraire le contenu de [URL du site]" pour récupérer le contenu d\'une page web.'
+            },
+            founderMode: {
+                description: 'Dites "Activer le mode fondateur" pour une animation thématique de startup avec des emojis !',
+                name: "Mode Fondateur"
             }
         },
         clipboard: {
@@ -89,6 +93,12 @@ export const fr = {
             description: "Échec de l'activation du mode fête",
             success: "Mode fête activé",
             toast: "Mode fête !"
+        },
+        founderMode: {
+            description: "Échec de l'activation du mode fondateur",
+            success: "Mode fondateur activé",
+            toast: "Mode fondateur !",
+            failed: "Échec de l'activation du mode fondateur"
         },
         switchTheme: "Thème changé en ",
         themeFailed: "Échec du changement de thème",

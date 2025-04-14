@@ -36,6 +36,10 @@ export function ToolsEducation() {
       description: t('tools.availableTools.partyMode.description'),
     },
     {
+      name: t('tools.availableTools.founderMode.name'),
+      description: t('tools.availableTools.founderMode.description'),
+    },
+    {
       name: t('tools.availableTools.launchWebsite.name'),
       description: t('tools.availableTools.launchWebsite.description'),
     },
@@ -68,4 +72,4 @@ export function ToolsEducation() {
       </Accordion>
     </div>
   )
-} 
+}
